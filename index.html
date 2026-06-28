@@ -55,12 +55,12 @@
         .show-slide4 #s2 { transform: translate3d(0, -100vh, 0); }
         .show-slide4 #s4 { transform: translate3d(0, 0, 0); }
 
-        /* --- Typography Engine --- */
+        /* --- Typography Engine - ALL TEXT 60% SMALLER --- */
         .header-text {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.8rem;          /* ~40% smaller */
+            font-size: 1.2rem;          /* 60% smaller */
             color: #fb6f92;
-            text-shadow: 3px 3px 0px #fff;
+            text-shadow: 2px 2px 0px #fff;
             text-align: center;
             position: absolute;
             top: 12%;
@@ -80,31 +80,31 @@
 
         .audio-hint {
             display: block;
-            font-size: 1.2rem;
+            font-size: 0.75rem;         /* 60% smaller */
             color: #ff8fab;
-            margin-top: 15px;
+            margin-top: 10px;
             font-family: 'Nunito', sans-serif;
             text-shadow: none;
         }
 
         .final-text {
-            font-size: 1.38rem;         /* ~40% smaller */
-            padding: 0 30px;
+            font-size: 0.92rem;         /* 60% smaller */
+            padding: 0 25px;
             max-width: 950px;
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         /* --- Countdown Overlay Styles --- */
         .countdown-text {
             position: absolute;
             bottom: 5%;
-            font-size: 0.9rem;
+            font-size: 0.65rem;         /* 60% smaller */
             color: #fb6f92;
             opacity: 0.7;
             font-family: 'Nunito', sans-serif;
             z-index: 20;
             background: rgba(255, 255, 255, 0.4);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 20px;
         }
 
@@ -126,7 +126,7 @@
         }
 
         #img-container-s2 {
-            bottom: 8%; /* Lowered from 22% so the long text doesn't overlap */
+            bottom: 8%;
         }
 
         .slide-up-init {
@@ -156,7 +156,7 @@
             pointer-events: none;
             opacity: 0.75;
             z-index: 1;
-            font-size: 2rem;
+            font-size: 1.4rem;          /* also reduced */
             animation: shimmer 3s ease-in-out infinite alternate;
         }
 
@@ -209,21 +209,21 @@
             100% { transform: translate3d(100px, 105vh, 0) rotate(360deg); opacity: 0; }
         }
 
-        /* === NEW BUTTONS STYLES (only for last slide) === */
+        /* === BUTTONS STYLES - also smaller text === */
         .last-slide-controls {
             position: absolute;
             bottom: 8%;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 16px;
             z-index: 30;
         }
 
         .control-btn {
-            padding: 14px 32px;
+            padding: 12px 26px;
             font-family: 'Fredoka One', cursive;
-            font-size: 1.1rem;
+            font-size: 0.95rem;         /* smaller */
             color: white;
             background: #fb6f92;
             border: none;
@@ -452,7 +452,6 @@
             }
         }
 
-        // === NEW FUNCTIONALITY ===
         function playMusic() {
             const finalAudio = document.getElementById('finalAudio');
             finalAudio.currentTime = 0;
@@ -460,18 +459,14 @@
         }
 
         function startAgain() {
-            // Reset everything
             const finalAudio = document.getElementById('finalAudio');
             finalAudio.pause();
             finalAudio.currentTime = 0;
 
-            // Reset body classes
             body.className = '';
 
-            // Restart all animations and timelines
             document.querySelectorAll('.floating-element').forEach(el => el.remove());
             
-            // Restart the whole experience
             setTimeout(() => {
                 location.reload();
             }, 50);
@@ -491,7 +486,6 @@
                 body.className = 'show-slide4'; 
                 triggerLastSlideHearts(); 
                 
-                // Play final audio clip file (original behavior)
                 const finalAudio = document.getElementById('finalAudio');
                 finalAudio.play().catch(err => console.log("Audio waiting for user interaction:", err));
             }, 15000);
